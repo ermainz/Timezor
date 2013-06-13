@@ -143,6 +143,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             //runningFragment = new TimerRunningFragment(listener);
 
             mFragmentManager = fm;
+            /*change*/
         }
 
 
