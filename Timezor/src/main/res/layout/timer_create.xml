@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp">
+        <TextView
+                android:id="@+id/hour_text2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:id="@+id/hour_text1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" H "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=":"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/min_text2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/min_text1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" M "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=":"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/sec_text2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:id="@+id/sec_text1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" S "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <Button
+                android:id="@+id/backspace_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="DELETE"/>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp">
+        <Button
+                android:id="@+id/button_1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_1"></Button>
+        <Button
+                android:id="@+id/button_2"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_2"></Button>
+        <Button
+                android:id="@+id/button_3"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_3"></Button>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp">
+        <Button
+                android:id="@+id/button_4"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_4"></Button>
+        <Button
+                android:id="@+id/button_5"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_5"></Button>
+        <Button
+                android:id="@+id/button_6"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_6"></Button>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp">
+        <Button
+                android:id="@+id/button_7"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_7"></Button>
+        <Button
+                android:id="@+id/button_8"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_8"></Button>
+        <Button
+                android:id="@+id/button_9"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_9"></Button>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_weight="1"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp">
+        <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:id="@+id/button_0"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/input_number_0"></Button>
+        <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/start_timer_button"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/start_button_text"/>
+
+
+</LinearLayout>

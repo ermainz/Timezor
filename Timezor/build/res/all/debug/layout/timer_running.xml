@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1">
+        <TextView
+                android:id="@+id/hour_text2_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:id="@+id/hour_text1_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" H "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=":"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/min_text2_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/min_text1_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" M "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=":"
+                android:textSize="32dp"
+                android:textStyle="bold"
+                />
+        <TextView
+                android:id="@+id/sec_text2_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:id="@+id/sec_text1_running"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:textSize="32dp"
+                />
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" S "
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+        <Button
+                android:id="@+id/save_button"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/save_button_text"
+                />
+
+    </LinearLayout>
+    <Button
+            android:id="@+id/stop_button"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/stop_button_text"/>
+</LinearLayout>
