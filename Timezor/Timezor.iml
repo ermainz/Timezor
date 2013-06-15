@@ -14,8 +14,6 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":Timezor" />
-        <option name="PROJECT_ABSOLUTE_PATH" value="C:\Users\kire\androidProjects\TimezorProject" />
-        <option name="GRADLE_HOME_DIR_PATH" />
       </configuration>
     </facet>
   </component>

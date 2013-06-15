@@ -1,10 +1,14 @@
 package com.ermainz.timezor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.ActionBar;
 //import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -21,7 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, TimerRunningFragment.SaveTimerListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -38,26 +42,75 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     ViewPager mViewPager;
 
-    public void startTimer(){
-        //FragmentManager fragmentManager = getFragmentManager();
-        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //Fragment newFrag = new TimerRunningFragment();
-        //fragmentTransaction.replace(R.id.pager, newFrag);
+    SharedPreferences mSharedPreferences;
+    List<Timer> savedTimerList;
+    FragmentManager fm;
+    String savedListFragmentTag;
+    ActionBar actionBar;
+    SavedListFragment f;
+
+    public void saveTimer(long seconds, String label) {
+        Timer newTimer = new Timer(seconds, label);
+        savedTimerList.add(newTimer);
+        if( f != null){
+            f.addNewData(newTimer);
+            //mViewPager.setCurrentItem(0);
+            actionBar.setSelectedNavigationItem(1);
+            //Log.e("MESSAGE", "F NOT NULL");
+        }
+        else {
+            //Log.e("MESSAGE", "F NULL");
+        }
+    }
+
+    public void loadTimerList(){
+        //savedTimerList.add(new Timer(Long.parseLong("3"), "Ramen"));
+        //savedTimerList.add(new Timer(Long.parseLong("30"), "Laundry"));
+
+        String default_value = "";
+        String savedString = mSharedPreferences.getString(getString(R.string.saved_timers_key), default_value);
+        if (savedString.equals(default_value)) {
+            return;
+        }
+        String[] timers = savedString.split(";");
+        for(String s : timers){
+            String[] timer = s.split(",");
+            savedTimerList.add(new Timer(Long.valueOf(timer[1]), timer[0]));
+        }
+    }
+
+    public void saveTimerList(){
+        String saveString = "";
+        for(Timer t : f.mTimerList){
+        //for(Timer t : savedTimerList){
+            saveString = saveString + t.label + "," + Long.toString(t.seconds) + ";";
+        }
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(getString(R.string.saved_timers_key), saveString);
+        editor.commit();
+    }
+
+    public MainActivity(){
+        savedTimerList = new ArrayList<Timer>();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mSharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        loadTimerList();
+
         setContentView(R.layout.activity_main);
 
-        Log.e("bullshit", "in activity");
         // Set up the action bar.
-        final ActionBar actionBar = getActionBar();
+        actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        fm = getSupportFragmentManager();
+        mSectionsPagerAdapter = new SectionsPagerAdapter(fm, this);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -84,6 +137,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        saveTimerList();
     }
 
     @Override
@@ -117,32 +176,41 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         /* http://stackoverflow.com/questions/7723964/replace-fragment-inside-a-viewpager */
         private final class TimerPageListener implements TimerPageFragmentListener {
             public void onSwitchTimerFragment(Long time){
-                mFragmentManager.beginTransaction().remove(timerPageFragment).commit();
-
                 if (timerPageFragment instanceof TimerCreateFragment){
-                    timerPageFragment = new TimerRunningFragment(listener, time);
+                    mFragmentManager.beginTransaction().remove(timerPageFragment).commit();
+                    timerPageFragment = new TimerRunningFragment(mContext, listener, time, mFragmentManager);
                 }
-                else {
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onStartSavedTimer(Long time) {
+                actionBar.setSelectedNavigationItem(0);
+                onSwitchTimerFragment(time);
+            }
+
+            @Override
+            public void onStopTimer() {
+                mFragmentManager.beginTransaction().remove(timerPageFragment).commit();
+                if (timerPageFragment instanceof TimerRunningFragment){
                     timerPageFragment = new TimerCreateFragment(listener);
                 }
-                //mFragmentManager.beginTransaction().replace(R.id.pager, timerPageFragment);
                 notifyDataSetChanged();
             }
         }
 
+        Context mContext;
         TimerPageListener listener = new TimerPageListener();
         //TimerCreateFragment createFragment;
         //TimerRunningFragment runningFragment;
         Fragment timerPageFragment;
         private final FragmentManager mFragmentManager;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SectionsPagerAdapter(FragmentManager fm, Context context) {
             super(fm);
 
-            //createFragment = new TimerCreateFragment(listener);
-            //runningFragment = new TimerRunningFragment(listener);
-
             mFragmentManager = fm;
+            mContext = context;
             /*change*/
         }
 
@@ -167,7 +235,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 return timerPageFragment;
             }
             else {
-                return new SavedListFragment();
+                Fragment fr = new SavedListFragment(savedTimerList, listener);
+                f = (SavedListFragment) fr;
+                savedListFragmentTag = fr.getTag();
+                return fr;
             }
         }
 
@@ -203,6 +274,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     public interface TimerPageFragmentListener {
         public void onSwitchTimerFragment(Long time);
+        public void onStartSavedTimer(Long time);
+        public void onStopTimer();
     }
 
 }

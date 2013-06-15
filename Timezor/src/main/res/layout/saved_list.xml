@@ -9,14 +9,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/listView"
+            android:id="@+id/savedTimerListView"
             android:layout_gravity="left|center_vertical"/>
 
-    <Button
+<!--    <Button
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:text="New Button"
             android:id="@+id/button"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"/>-->
 </LinearLayout>
