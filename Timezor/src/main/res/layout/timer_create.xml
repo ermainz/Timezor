@@ -15,14 +15,14 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 />
         <TextView
                 android:id="@+id/hour_text1"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 />
         <TextView
                 android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text=":"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 android:textStyle="bold"
                 />
         <TextView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 android:textStyle="bold"
                 />
         <TextView
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 android:textStyle="bold"
                 />
         <TextView
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text=":"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 android:textStyle="bold"
                 />
         <TextView
@@ -73,14 +73,14 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 />
         <TextView
                 android:id="@+id/sec_text1"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="0"
-                android:textSize="32dp"
+                android:textSize="52dp"
                 />
         <TextView
                 android:layout_height="wrap_content"
